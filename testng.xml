@@ -1,0 +1,7 @@
+<suite name="UI Automation Suite">
+    <test name="Functional Tests">
+        <classes>
+            <class name="tests.HomePageTest"/>
+        </classes>
+    </test>
+</suite>
