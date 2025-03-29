@@ -8,19 +8,33 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
     WebDriver driver;
 
-    @FindBy(id = "searchBox")
-    WebElement searchBox;
+    @FindBy(xpath = "//a[text()='Browse By Category']")
+    WebElement browseByCategoryLink;
 
-    @FindBy(id = "searchButton")
-    WebElement searchButton;
+    @FindBy(xpath = "//a[text()='Parts Look Up']")
+    WebElement partsLookupLink;
+
+    @FindBy(xpath = "//a[text()='Contact']")
+    WebElement contactLink;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void searchProduct(String productName) {
-        searchBox.sendKeys(productName);
-        searchButton.click();
+    public boolean isBrowseByCategoryVisible() {
+        return browseByCategoryLink.isDisplayed();
+    }
+
+    public boolean isPartsLookupVisible() {
+        return partsLookupLink.isDisplayed();
+    }
+
+    public boolean isContactVisible() {
+        return contactLink.isDisplayed();
+    }
+
+    public void clickBrowseByCategory() {
+        browseByCategoryLink.click();
     }
 }

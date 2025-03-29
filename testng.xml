@@ -1,7 +1,13 @@
 <suite name="UI Automation Suite">
     <test name="Functional Tests">
         <classes>
-            <class name="tests.HomePageTest"/>
+            <class name="tests.ChemicalsAerosolsTest"/>
+            <class name="tests.AppearanceAccessoriesTest"/>
+            <class name="tests.FiltrationTest"/>
+            <class name="tests.WiperBladesLightingTest"/>
+            <class name="tests.MaintenanceRepairTest"/>
+            <class name="tests.ToolsEquipmentTest"/>
+            <class name="tests.ShopSuppliesTest"/>
         </classes>
     </test>
 </suite>
