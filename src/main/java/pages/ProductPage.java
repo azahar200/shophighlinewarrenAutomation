@@ -1,32 +1,33 @@
 package pages;
 
+import locators.ProductPageLocators;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage {
     WebDriver driver;
-
-    @FindBy(xpath = "(//span[@class='product-title'])[1]")
-    WebElement productTitle;
-
-    @FindBy (xpath = "(//span[@itemprop='name'])[1]")
-    WebElement productPageProductTitle;
+    ProductPageLocators locators;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        locators = new ProductPageLocators();
+        PageFactory.initElements(driver, locators);
     }
 
     public boolean isProductTitleVisible() {
-        return productTitle.isDisplayed();
-    }
-    public String getProductTitle() {
-        return productTitle.getText();
-    }
-    public boolean isProductPageProductTitleVisible() {
-        return productPageProductTitle.isDisplayed();
+        return locators.productTitle.isDisplayed();
     }
 
+    public String getProductTitle() {
+        return locators.productTitle.getText();
+    }
+
+    public boolean isProductPageProductTitleVisible() {
+        return locators.productPageProductTitle.isDisplayed();
+    }
+
+    public void searchProduct(String productName) {
+        locators.searchBar.sendKeys(productName + Keys.ENTER);
+    }
 }

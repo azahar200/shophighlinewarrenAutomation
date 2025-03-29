@@ -1,8 +1,7 @@
 package tests;
 
 import base.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import inputitems.ProductPageInputItems;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BrowseByCategoryPage;
@@ -30,7 +29,7 @@ public class BasicUITest extends BaseTest {
 
     @Test(priority = 3)
     public void verifyProductDetails() {
-        driver.get("https://www.shophighlinewarren.com/c/oil-bar-chain"); // Replace with actual product URL
+        driver.get(ProductPageInputItems.PRODUCT_URL);
         ProductPage productPage = new ProductPage(driver);
         Assert.assertTrue(productPage.isProductTitleVisible(), "Product title not visible.");
 
@@ -39,10 +38,10 @@ public class BasicUITest extends BaseTest {
         System.out.println("Product Name: " + productName);
 
         // Navigate back to the homepage
-        driver.get("https://www.shophighlinewarren.com/");
+        driver.get(ProductPageInputItems.HOMEPAGE_URL);
 
         // Enter the product name into the search bar and press enter
-        driver.findElement(By.xpath("(//input[@placeholder='Search'])[1]")).sendKeys(productName + Keys.ENTER);
+        productPage.searchProduct(productName);
 
         // Verify that the product page is displayed again
         Assert.assertTrue(productPage.isProductPageProductTitleVisible(), "Product title not visible after search.");
