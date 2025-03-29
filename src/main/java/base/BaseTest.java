@@ -21,24 +21,24 @@ public class BaseTest {
     public static final String URL = "https://" + Username +":" + AccessKey +"@hub-cloud.browserstack.com/wd/hub";
 
     @BeforeClass
-    public void setUp()  {
-//        DesiredCapabilities caps = new DesiredCapabilities();
-//        caps.setCapability("bstack:options", new HashMap<String, Object>() {{
-//            put("os", "Windows");
-//            put("osVersion", "10");
-//            put("buildName", "Build Number 1.0.0");
-//            put("sessionName", "BasicUITest");
-//        }});
-//        caps.setCapability("browserName", "Chrome");
-//        caps.setCapability("browserVersion", "134");
+    public void setUp() throws MalformedURLException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("bstack:options", new HashMap<String, Object>() {{
+            put("os", "Windows");
+            put("osVersion", "10");
+            put("buildName", "Build Number 1.0.0");
+            put("sessionName", "BasicUITest");
+        }});
+        caps.setCapability("browserName", "Chrome");
+        caps.setCapability("browserVersion", "134");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        //caps.merge(options);
+        caps.merge(options);
 
-        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver(options);
 
-        //driver = new RemoteWebDriver(new URL(URL),caps);
+        driver = new RemoteWebDriver(new URL(URL),caps);
         driver.get("https://www.shophighlinewarren.com/");
     }
 
